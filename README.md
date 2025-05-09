@@ -14,13 +14,13 @@ This repository implements a unified framework for inferring the most probable a
 
 | File | Description |
 |------|-------------|
-| `main.py` | Running simulation episodes |
-| `inference.py` | Bayesian approach-based attack intent inference  |
-| `ckf.py` | Implementation of Cubature Kalman Filter |
-| `model.py` | Physical dynamics model of the HGV |
-| `model_jax.py` | JAX-based trajectory propagation for dynamics-based prediction |
-| `plot.py` | 3D visualization utilities for trajectory |
-| `utils.py` | Helper functions and parameters|
+| `main.py` | Runs simulation episodes |
+| `inference.py` | Infers the HGV's target intent using a Bayesian framework  |
+| `ckf.py` | Implements the Cubature Kalman Filter |
+| `model.py` | Defines the physical dynamics model of the Hypersonic Glide Vehicle (HGV) |
+| `model_jax.py` | Provides JAX-based rollout functions for efficient trajectory propagation |
+| `plot.py` | Contains 3D visualization utilities for trajectories |
+| `utils.py` | Includes helper functions, constants, and configuration parameters |
 
 ## ⚙️ Environment Requirements
 Tested on:
