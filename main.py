@@ -175,9 +175,10 @@ def test(foldername, iteration):
                 ax.view_init(30,60)
                 plt.draw()
                 plt.pause(0.001)
-        print(f"  Sce{iteration}//Attack Probability of Target {current_target_index} at Time {t}: {100*inference.prob_delta[current_target_index]:.2f}% ")
-        print("Beta: ", np.round(inference.prob_beta_truncated_mu,3))
-        print("Threat", np.round(threat_value,3))
+        print_progress_bar(t + 1, simul_time, prefix=f"Sim {iteration}")
+        # print(f"  Sce{iteration}//Attack Probability of Target {current_target_index} at Time {t}: {100*inference.prob_delta[current_target_index]:.2f}% ")
+        # print("Beta: ", np.round(inference.prob_beta_truncated_mu, 4))
+        #print("Threat", np.round(threat_value,3))
 
         # Update CKF with new estimates
         ckf.X = estimated_vehicle_state
@@ -189,7 +190,9 @@ def test(foldername, iteration):
         attack_intent.append(inference.prob_delta)
     
     print(f"Simulation {iteration} is Done")
-    
+    print(f"  Sce{iteration}//Attack Probability of Target {current_target_index} at Time {t}: {100*inference.prob_delta[current_target_index]:.2f}% ")
+    print("Beta: ", np.round(inference.prob_beta_truncated_mu[current_target_index], 4))
+
     # Save results
     if save_result:
         true_states = np.array(true_states)
@@ -201,6 +204,29 @@ def test(foldername, iteration):
             estimated_states = estimated_states,
             true_states = true_states)
         
+if __name__ == "__main__":
+    iteration = 20
+    foldername = 'Result'
+    plot_result = True
 
-for itr in range(20):
-    test(foldername = 'Result', iteration=itr)
+    for itr in range(iteration):
+        test(foldername = foldername, iteration=itr)
+
+    if plot_result:
+        prob_delta_arr = []
+        ind_min = 400
+        for i in range(iteration):
+            result = np.load(f'./{foldername}/result_{i}.npz')
+            current_idx = result['current_target_index']
+            prob_delta_arr.append(result['prob_delta'][:ind_min][:,current_idx])
+
+        mean_delta = np.mean(prob_delta_arr, axis =0)
+        std_delta = np.var(prob_delta_arr, axis =0)
+        plt.figure(7)
+        t = np.linspace(0,len(mean_delta),len(mean_delta))
+        plt.plot(t, mean_delta, color = 'b')
+        plt.fill_between(t, mean_delta-std_delta, mean_delta+std_delta, alpha=0.2, facecolor='b')
+        plt.xlim([10, 400])
+        plt.grid(True)
+        plt.ylim([0,1.01])
+        plt.show()
