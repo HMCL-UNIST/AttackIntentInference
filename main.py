@@ -78,6 +78,7 @@ def test(foldername, iteration):
     
 
     print(f" Simulation {iteration}: HGV attack Target {current_target_index}")
+    print("Threat", np.round(threat_value,3))
     for t in range(simul_time):
         
         # Terminate if HGV hits ground
@@ -176,9 +177,6 @@ def test(foldername, iteration):
                 plt.draw()
                 plt.pause(0.001)
         print_progress_bar(t + 1, simul_time, prefix=f"Sim {iteration}")
-        # print(f"  Sce{iteration}//Attack Probability of Target {current_target_index} at Time {t}: {100*inference.prob_delta[current_target_index]:.2f}% ")
-        # print("Beta: ", np.round(inference.prob_beta_truncated_mu, 4))
-        #print("Threat", np.round(threat_value,3))
 
         # Update CKF with new estimates
         ckf.X = estimated_vehicle_state
