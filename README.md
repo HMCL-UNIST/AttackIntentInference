@@ -4,6 +4,8 @@ Attack Intent Inference of Hypersonic Glide Vehicle based on a Unified Dynamics 
 # Overall Architecture  
 This repository implements a unified framework for inferring the most probable attack target of a Hypersonic Glide Vehicle (HGV). The framework combines dynamics-based trajectory propagation and decision-making models under uncertainty.
 
+![algorithm](https://github.com/user-attachments/assets/84b62b59-a08d-402c-8fda-4b356cf9e8c7)
+
 ## 📝 Citation
 **Y. Nam**, **H. Lee**, **H. Choi**, **W.-S. Ra**, and **C. Kwon**,  
 "Attack Intent Inference of Hypersonic Glide Vehicle based on a Unified Dynamics and Decision-Making Model"  (**under review**)
