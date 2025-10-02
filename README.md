@@ -7,8 +7,9 @@ This repository implements a unified framework for inferring the most probable a
 ![algorithm](https://github.com/user-attachments/assets/84b62b59-a08d-402c-8fda-4b356cf9e8c7)
 
 ## 📝 Citation
-**Y. Nam**, **H. Lee**, **H. Choi**, **W.-S. Ra**, and **C. Kwon**,  
-"Attack Intent Inference of Hypersonic Glide Vehicle based on a Unified Dynamics and Decision-Making Model"  (**under review**)
+Y. Nam, H. Lee, H. Choi, W.-S. Ra, and C. Kwon,  
+["Attack Intent Inference of Hypersonic Glide Vehicle based on a Unified Dynamics and Decision-Making Model"](https://ieeexplore.ieee.org/abstract/document/11018237), *IEEE Transactions on Aerospace and Electronic Systems*, 2025.
+
 
 ## 📂 Project Structure
 
